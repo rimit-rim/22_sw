@@ -13,3 +13,11 @@
 - 코드 파일 경로 내에 이미지를 저장하는 폴더 경로<b>(/video_caputre)</b>가 반드시 있어야 합니다.
 - csv 파일의 경우 코드를 실행하면 자동으로 생성 됩니다.
 - 코드에 대한 설명은 주석을 참고해주세요.
+
+### 저장되는 csv파일
+- time_data : 분 단위로 인원수, 사용률, 상태가 저장되는 csv파일
+  - 여유: 40% 미만 / 보통: 40~75% / 혼잡 75%
+![1](https://user-images.githubusercontent.com/86980164/183939597-8084fa22-a4ee-4c13-9cda-419ea430dbe8.png)
+
+- day_data : 일주일(시간대별로) 데이터가 찍히는 csv
+![2](https://user-images.githubusercontent.com/86980164/183939609-0b414aa8-6823-49b4-a0e6-642b93394e0b.png)
