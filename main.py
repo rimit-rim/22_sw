@@ -8,7 +8,9 @@ from csv import writer
 
 # time_data.csv (실시간 데이터) 파일 생성 및 초기화
 time_df = pd.DataFrame(data={'date': [],
-                             'number of people': []})
+                             'number of people': [],
+                             'percent': [],
+                             'condition': []})
 time_df.to_csv('time_data.csv')
 
 # day_data.csv (일주일 데이터를 시간대별로 저장하는 csv) 초기화 (생성은 하단에)
@@ -103,8 +105,18 @@ def now_camera():
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
+    # 혼잡도 계산 (여유: 40% 미만, 보통: 40~75%, 혼잡: 75%~)
+    # 7층(72석)
+    F7 = int((label_count / 72) * 100)
+    if F7 < 40:
+        F7_con = '여유'
+    elif F7 < 75:
+        F7_con = '보통'
+    else:
+        F7_con = '혼잡'
+
     # time_data.csv에 데이터 추가
-    tmp_data = ['', str(now), label_count]
+    tmp_data = ['', str(now), label_count, F7, F7_con]
     with open('time_data.csv', 'a', newline='') as f:
         writer_object = writer(f)
         writer_object.writerow(tmp_data)
@@ -113,7 +125,7 @@ def now_camera():
     # day_df 데이터 값 변경 후 day_data.csv로 생성
     day_df.at[weekday, week_now] = day_df.at[weekday, week_now] + label_count
     day_df.to_csv('day_data.csv')
-    
+
 # schedule.every(N).seconds.do(now_camera) : now_camera 함수를 n초 후 자동 반복
 # 컴퓨터 사양에 따라 달라질 수 있으나 여러 딜레이 시간을 고려해 50초로 설정(결론적으론 1분 간격으로 반복)
 schedule.every(50).seconds.do(now_camera)
