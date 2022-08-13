@@ -25,4 +25,4 @@
 ![2](https://user-images.githubusercontent.com/86980164/183939609-0b414aa8-6823-49b4-a0e6-642b93394e0b.png)
 
 ### 실행영상
-https://user-images.githubusercontent.com/86980164/184469059-e4a42f01-2284-473d-8ead-717f201c8712.mp4
+https://user-images.githubusercontent.com/86980164/184469237-6a3f92a9-011a-46b6-8ded-7f7bffabda88.mp4
